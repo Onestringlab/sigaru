@@ -1,0 +1,54 @@
+body{
+
+    background-color: antiquewhite;
+    background: url('https://sigaru.xyz/images/backgroundSIGARU/2.jpg');
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+#main{
+    background: url('https://sigaru.xyz/images/backgroundSIGARU/2.jpg');
+    margin-top: 70px;
+    margin-bottom: 40px;
+    margin-left: -10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#nav-top {
+    padding-left: 20px;
+    padding-right: 30px;
+}
+
+label.error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  padding:1px 20px 1px 20px;
+  width: 100%;
+}
+
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+
+.counter{
+  padding:8px;
+  color:#ccc;
+}
+
+.lurus{
+  padding-top: 8px
+}
+
