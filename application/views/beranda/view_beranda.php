@@ -3,7 +3,11 @@
     <?php  $this->load->view('beranda/view_pengumuman'); ?>
   </div>
  	<div class="col-md-12">
-    <?php  $this->load->view('kerusakan/view_kerusakan_beranda'); ?>
+    <?php 
+      if ($this->session->userdata('username') != '' && $this->session->userdata('role') != '') {
+        $this->load->view('kerusakan/view_kerusakan_beranda');
+      }
+      ?>
   </div>
   <div class="col-md-6">
     <?php  $this->load->view('beranda/view_kendaraan_hariini'); ?>

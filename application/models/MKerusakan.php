@@ -23,7 +23,7 @@ function get_kerusakan($idkerusakan){
   return $data;
 }
 
-function get_kerusakan_status($status){
+function get_kerusakan_status($status, $role, $username = null){
   $data = array();
   $tanggal = date('Y-m-d',strtotime('-7 days'));
   $this->db->select('*');
@@ -31,6 +31,9 @@ function get_kerusakan_status($status){
   $this->db->where('status =',$status);
   if($status == "Telah Diperbaiki"){
     $this->db->where('tglpelaporan >=',$tanggal);
+  }
+  if ($role == 'Pengguna' && $username !== null) {
+      $this->db->where('insertedby', $username);
   }
   $this->db->order_by('tglpelaporan','ASC');
   $Q = $this->db->get();
@@ -61,12 +64,15 @@ function getAll_kerusakan(){
   return $data;
 }
 
-function getUpdate_kerusakan(){
+function getUpdate_kerusakan($role, $username = null){
   $tanggal = date('Y-m-d',strtotime('-180 days'));
   $this->db->select('*');
   $this->db->from('tb_kerusakan');
   $this->db->where('tglpelaporan >=',$tanggal);
   $this->db->where('status !=','Telah Diperbaiki');
+  if ($role == 'Pengguna' && $username !== null) {
+      $this->db->where('insertedby', $username);
+  }
   $this->db->order_by('tglpelaporan','ASC');
   $data = array();
   $Q = $this->db->get();
@@ -79,10 +85,14 @@ function getUpdate_kerusakan(){
   return $data;
 }
 
-function get_data_kerusakan(){
+function get_data_kerusakan($role, $username = null){
   $this->db->select('*');
   $this->db->from('tb_kerusakan');
   $this->db->where('status !=','Telah Diperbaiki');
+  // Jika role adalah 'Pengguna', tambahkan kondisi untuk username
+  if ($role == 'Pengguna' && $username !== null) {
+      $this->db->where('insertedby', $username);
+  }
   $this->db->order_by('tglpelaporan','ASC');
   $data = array();
   $Q = $this->db->get();

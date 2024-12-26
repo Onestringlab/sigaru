@@ -8,10 +8,13 @@ class Kerusakan extends CI_Controller {
 		$this->load->model('MKerusakan');
 		$this->load->model('MLov');
 		$this->load->model('MPengumuman');
+
+		$this->username = $this->session-> userdata('username');
+  		$this->role = $this->session->userdata('role');
 	}
 
 	function index(){
-		$this->data['kerusakan_list'] = $this->MKerusakan->getUpdate_kerusakan();
+		$this->data['kerusakan_list'] = $this->MKerusakan->getUpdate_kerusakan($this->role, $this->username);
 		$this->data['main_content']= 'kerusakan/view_kerusakan';
 		$this->data['pengumuman_list'] = $this->MPengumuman->getAktif_pengumuman();
 		$this->load->view('view_main',$this->data);

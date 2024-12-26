@@ -13,9 +13,13 @@ public function __construct(){
   $this->load->model('MPeminjaman');
   $this->load->model('MKerusakan');
   $this->load->model('MPengumuman');
+
+  $this->username = $this->session-> userdata('username');
+  $this->role = $this->session->userdata('role');
 }
 
 public function index(){
+
   $this->data['main_content']= 'beranda/view_beranda';
   $this->data['penyewaan_list'] = $this->MPenyewaan->getUpdate_penyewaan();
   $this->data['hariini_list'] = $this->MPenyewaan->getHariini_penyewaan();
@@ -25,8 +29,7 @@ public function index(){
 
   $this->data['peminjaman_list'] = $this->MPeminjaman->getHariini_peminjaman();
 
-  $this->data['kerusakan_list'] = $this->MKerusakan->get_data_kerusakan();
-
+  $this->data['kerusakan_list'] = $this->MKerusakan->get_data_kerusakan($this->role, $this->username);
   $this->data['pengumuman_list'] = $this->MPengumuman->getAktif_pengumuman();
 
   $username = $this->session-> userdata('username');
@@ -74,9 +77,9 @@ public function beranda_kendaraan(){
 public function beranda_kerusakan(){
   $this->data['main_content']= 'beranda/view_beranda_kerusakan';
   // $this->data['peminjaman_list'] = $this->MKerusakan->get_kerusakan_status();
-  $this->data['dilaporkan_list'] = $this->MKerusakan->get_kerusakan_status('Dilaporkan');
-  $this->data['diterima_list'] = $this->MKerusakan->get_kerusakan_status('Diterima');
-  $this->data['diperbaiki_list'] = $this->MKerusakan->get_kerusakan_status('Telah Diperbaiki');
+  $this->data['dilaporkan_list'] = $this->MKerusakan->get_kerusakan_status('Dilaporkan',$this->role,$this->username);
+  $this->data['diterima_list'] = $this->MKerusakan->get_kerusakan_status('Diterima',$this->role,$this->username);
+  $this->data['diperbaiki_list'] = $this->MKerusakan->get_kerusakan_status('Telah Diperbaiki',$this->role,$this->username);
   $this->data['pengumuman_list'] = $this->MPengumuman->getAktif_pengumuman();
 
   $username = $this->session-> userdata('username');

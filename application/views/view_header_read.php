@@ -19,7 +19,7 @@
             <ul class="dropdown-menu">
               <li><a href="<?php echo base_url(); ?>index.php/beranda/beranda_ruangan"><span class="fa fa-building-o" aria-hidden="true"></span> Status Penggunaan Ruangan</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/beranda/beranda_kendaraan"><span class="fa fa-car" aria-hidden="true"></span> Status Peminjaman Kendaraan</a></li>
-              <li><a href="<?php echo base_url(); ?>index.php/beranda/beranda_kerusakan"><span class="fa fa-wrench" aria-hidden="true"></span> Status Perbaikan Kerusakan</a></li>
+              <!-- <li><a href="<?php echo base_url(); ?>index.php/beranda/beranda_kerusakan"><span class="fa fa-wrench" aria-hidden="true"></span> Status Perbaikan Kerusakan</a></li> -->
             </ul>
           </li>
        </ul>
